@@ -97,3 +97,79 @@ class KnowledgeBase:
                 f"[Policy Doc {idx}: {doc['title']} (ID: {doc['id']})]\n{doc['content']}"
             )
         return "\n\n".join(context_blocks)
+
+
+class PastTicketRetriever:
+    """
+    Retrieves similar historical customer emails and human responses from the dataset.
+    Implements few-shot in-context learning by retrieving relevant past email pairs.
+    """
+
+    def __init__(self, tickets_path: Optional[Path] = None):
+        self.tickets_path = tickets_path or (PROJECT_ROOT / "data" / "support_tickets.json")
+        self.past_tickets = []
+        self._load_tickets()
+
+    def _load_tickets(self) -> None:
+        if self.tickets_path.exists():
+            with open(self.tickets_path, "r", encoding="utf-8") as f:
+                self.past_tickets = json.load(f)
+
+    @staticmethod
+    def _tokenize(text: str) -> List[str]:
+        return re.findall(r"\b[a-zA-Z0-9_-]{2,}\b", text.lower())
+
+    def retrieve_similar(
+        self,
+        query: str,
+        category: Optional[str] = None,
+        exclude_ticket_id: Optional[str] = None,
+        top_k: int = 1
+    ) -> List[Dict[str, Any]]:
+        """
+        Finds the most relevant historical tickets (excluding the current one) to use as few-shot examples.
+        """
+        query_tokens = set(self._tokenize(query))
+        candidates = [t for t in self.past_tickets if t.get("ticket_id") != exclude_ticket_id]
+
+        if not candidates:
+            return []
+
+        scored = []
+        for t in candidates:
+            score = 0.0
+            if category and t.get("category") == category:
+                score += 4.0
+
+            text = f"{t.get('subject', '')} " + " ".join(m.get("body", "") for m in t.get("thread", []))
+            t_tokens = set(self._tokenize(text))
+            overlap = len(query_tokens.intersection(t_tokens))
+            score += overlap
+
+            scored.append((score, t))
+
+        scored.sort(key=lambda x: x[0], reverse=True)
+        return [t for score, t in scored[:top_k]]
+
+    def get_few_shot_prompt_block(
+        self,
+        query: str,
+        category: Optional[str] = None,
+        exclude_ticket_id: Optional[str] = None
+    ) -> str:
+        """Formats the retrieved historical email pair into a few-shot guidance block."""
+        matches = self.retrieve_similar(query, category=category, exclude_ticket_id=exclude_ticket_id, top_k=1)
+        if not matches:
+            return ""
+
+        t = matches[0]
+        customer_msgs = [m.get("body", "") for m in t.get("thread", []) if m.get("sender") == "customer"]
+        cust_body = customer_msgs[-1] if customer_msgs else ""
+        return (
+            f"### RELEVANT PAST EMAIL & HUMAN RESPONSE (FEW-SHOT RETRIEVAL FROM DATASET):\n"
+            f"- Category: {t.get('category')} | Sentiment: {t.get('sentiment')}\n"
+            f"- Customer Subject: {t.get('subject')}\n"
+            f"- Customer Message: {cust_body[:200]}...\n"
+            f"- Senior Agent Response Sent:\n{t.get('ground_truth_reply')}\n"
+        )
+

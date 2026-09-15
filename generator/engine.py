@@ -14,7 +14,7 @@ from typing import Optional, Dict, Any, List
 from pathlib import Path
 
 from dataset.schema import SupportTicket
-from generator.knowledge_base import KnowledgeBase
+from generator.knowledge_base import KnowledgeBase, PastTicketRetriever
 from generator.prompts import SYSTEM_PROMPT, build_generation_prompt
 
 
@@ -23,6 +23,7 @@ class BaseResponseGenerator(ABC):
 
     def __init__(self, kb: Optional[KnowledgeBase] = None):
         self.kb = kb or KnowledgeBase()
+        self.ticket_retriever = PastTicketRetriever()
 
     @abstractmethod
     def generate(self, ticket: SupportTicket, custom_instruction: Optional[str] = None) -> str:
@@ -323,8 +324,11 @@ class OpenAIEngine(BaseResponseGenerator):
         customer_msgs = [m for m in ticket.thread if m.sender == "customer"]
         query = f"{ticket.subject} {customer_msgs[-1].body if customer_msgs else ''}"
         kb_context = self.kb.get_context_for_prompt(query, category=ticket.category, top_k=2)
+        few_shot_block = self.ticket_retriever.get_few_shot_prompt_block(
+            query, category=ticket.category, exclude_ticket_id=ticket.ticket_id
+        )
         
-        user_prompt = build_generation_prompt(ticket, kb_context)
+        user_prompt = build_generation_prompt(ticket, kb_context, few_shot_block=few_shot_block)
         if custom_instruction:
             user_prompt += f"\n\n### ADDITIONAL INSTRUCTIONS:\n{custom_instruction}"
 
@@ -371,8 +375,11 @@ class GeminiEngine(BaseResponseGenerator):
         customer_msgs = [m for m in ticket.thread if m.sender == "customer"]
         query = f"{ticket.subject} {customer_msgs[-1].body if customer_msgs else ''}"
         kb_context = self.kb.get_context_for_prompt(query, category=ticket.category, top_k=2)
+        few_shot_block = self.ticket_retriever.get_few_shot_prompt_block(
+            query, category=ticket.category, exclude_ticket_id=ticket.ticket_id
+        )
         
-        user_prompt = build_generation_prompt(ticket, kb_context)
+        user_prompt = build_generation_prompt(ticket, kb_context, few_shot_block=few_shot_block)
         if custom_instruction:
             user_prompt += f"\n\n### ADDITIONAL INSTRUCTIONS:\n{custom_instruction}"
 

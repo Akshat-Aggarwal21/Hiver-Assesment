@@ -8,6 +8,7 @@ Designed specifically for shared inboxes in Gmail, incorporating:
 - Actionable steps with explicit timelines
 - Compliance and anti-hallucination guardrails
 """
+from typing import Optional
 
 SYSTEM_PROMPT = """You are Hiver AI, an expert customer support specialist assisting teams that manage shared inboxes inside Gmail.
 
@@ -66,10 +67,10 @@ def format_thread_history(thread) -> str:
     return "\n".join(lines)
 
 
-def build_generation_prompt(ticket, kb_context: str) -> str:
-    """Constructs the complete user prompt from a SupportTicket object and KB context."""
+def build_generation_prompt(ticket, kb_context: str, few_shot_block: Optional[str] = None) -> str:
+    """Constructs the complete user prompt from a SupportTicket object, KB context, and optional few-shot past email retrieval."""
     thread_history = format_thread_history(ticket.thread)
-    return USER_PROMPT_TEMPLATE.format(
+    prompt = USER_PROMPT_TEMPLATE.format(
         account_id=ticket.customer_context.account_id,
         plan_tier=ticket.customer_context.plan_tier,
         mrr=ticket.customer_context.mrr,
@@ -78,3 +79,6 @@ def build_generation_prompt(ticket, kb_context: str) -> str:
         kb_context=kb_context,
         thread_history=thread_history
     )
+    if few_shot_block:
+        prompt = f"{few_shot_block}\n\n{prompt}"
+    return prompt
