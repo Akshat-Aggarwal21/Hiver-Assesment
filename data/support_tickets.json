@@ -1,0 +1,1058 @@
+[
+  {
+    "ticket_id": "TICK-101",
+    "category": "cancellation_refund",
+    "priority": "high",
+    "sentiment": "frustrated",
+    "subject": "Accidental annual renewal - need full refund immediately",
+    "customer_context": {
+      "account_id": "ACC-84920",
+      "plan_tier": "Pro",
+      "mrr": 120.0,
+      "account_status": "active",
+      "joined_date": "2023-04-10",
+      "metadata": {
+        "renewal_date": "2026-09-12",
+        "charged_amount": 1440.0,
+        "days_since_charge": 4
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Sarah Jenkins",
+        "sender_email": "sarah@acmedigital.com",
+        "timestamp": "2026-09-15T09:14:00Z",
+        "subject": "Accidental annual renewal - need full refund immediately",
+        "body": "Hi, I just noticed an unauthorized $1,440 charge on our corporate Amex card from Hiver. We barely used the tool last month and forgot to turn off auto-renew. We are within 4 days of the charge. Please cancel our account immediately and issue a full refund back to our card. I need confirmation today for our finance audit."
+      }
+    ],
+    "ground_truth_reply": "Hi Sarah,\n\nThank you for reaching out, and I completely understand the urgency around this renewal charge.\n\nBecause your renewal occurred just 4 days ago, your request falls well within our 14-day full refund guarantee. I have gone ahead and processed a full refund of $1,440.00 back to your original American Express card.\n\nPlease allow 3-5 business days for your banking institution to reflect the credited funds. Additionally, I have cancelled the auto-renewal on your Pro subscription so you won't incur any future charges.\n\nA formal credit note receipt has also been sent to your billing email for your finance audit. Please let me know if you need anything else!\n\nBest regards,\nCustomer Success Team",
+    "rubric": {
+      "required_facts": [
+        "14-day refund guarantee applies",
+        "Full refund of $1,440 processed",
+        "3-5 business days processing timeframe",
+        "Subscription auto-renewal cancelled"
+      ],
+      "prohibited_claims": [
+        "Refund cannot be given",
+        "Credits only without offering card refund",
+        "Blaming the customer for forgetting"
+      ],
+      "expected_action_items": [
+        "Confirm refund amount and destination card",
+        "Provide clear settlement timeline (3-5 days)",
+        "Confirm cancellation status"
+      ],
+      "tone_requirement": "empathetic_and_clear",
+      "min_resolution_points": [
+        "Confirm $1,440 refund processed",
+        "Confirm cancellation",
+        "Acknowledge finance audit requirement"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-102",
+    "category": "technical_issue",
+    "priority": "urgent",
+    "sentiment": "angry",
+    "subject": "Shared inbox not syncing - our team is blind to incoming client emails!",
+    "customer_context": {
+      "account_id": "ACC-31092",
+      "plan_tier": "Enterprise",
+      "mrr": 950.0,
+      "account_status": "active",
+      "joined_date": "2022-08-01",
+      "metadata": {
+        "shared_inbox_name": "support@apexlogistics.com",
+        "affected_users": 18
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "David Martinez",
+        "sender_email": "dmartinez@apexlogistics.com",
+        "timestamp": "2026-09-15T11:20:00Z",
+        "subject": "Shared inbox not syncing - our team is blind to incoming client emails!",
+        "body": "This is completely unacceptable. Our shared support inbox has not synced a single email for the past 2 hours. Our 18 support reps have no idea which tickets are coming in, and we are missing our client SLA commitments. We pay for Enterprise support and need this resolved right now. What is happening?"
+      }
+    ],
+    "ground_truth_reply": "Hi David,\n\nI sincerely apologize for the disruption and frustration this sync interruption has caused your team today. Given your Enterprise SLA, I am prioritizing this directly.\n\nOur telemetry indicates that Google Workspace OAuth tokens for 'support@apexlogistics.com' experienced a credential refresh timeout approximately 2 hours ago. \n\nTo restore real-time sync immediately, please take the following step:\n1. Have a Google Workspace Admin navigate to Integrations > Gmail in the Hiver dashboard and click 'Re-authorize Account'.\n2. This refreshes the OAuth handshake, and all pending queued emails will back-populate within 3-5 minutes without any data loss.\n\nI have also engaged our Tier 2 on-call engineers to monitor your inbox queue directly. I will stay on this thread until we verify incoming mail flows smoothly. If you prefer a live bridge, reply here and I will generate an instant Google Meet link.\n\nWarm regards,\nSenior Enterprise Support",
+    "rubric": {
+      "required_facts": [
+        "Acknowledge Enterprise SLA urgency",
+        "Diagnose OAuth re-authorization step",
+        "Reassure no data loss and 3-5 minute back-sync",
+        "Offer real-time monitoring/follow-up"
+      ],
+      "prohibited_claims": [
+        "Dismissing urgency as a minor issue",
+        "Claiming emails are permanently lost"
+      ],
+      "expected_action_items": [
+        "Step-by-step instructions to re-authorize Google OAuth",
+        "Commitment to stay on the ticket until confirmed"
+      ],
+      "tone_requirement": "de-escalating_urgent_accountable",
+      "min_resolution_points": [
+        "De-escalate customer frustration",
+        "Provide immediate technical fix (OAuth re-auth)",
+        "Commit to monitoring resolution"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-103",
+    "category": "account_access",
+    "priority": "high",
+    "sentiment": "urgent",
+    "subject": "Lost my phone with Authenticator app - locked out of Hiver",
+    "customer_context": {
+      "account_id": "ACC-55201",
+      "plan_tier": "Pro",
+      "mrr": 240.0,
+      "account_status": "active",
+      "joined_date": "2024-02-18",
+      "metadata": {
+        "user_role": "Member",
+        "admin_email": "admin@cloudtech.io"
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Elena Rostova",
+        "sender_email": "elena@cloudtech.io",
+        "timestamp": "2026-09-15T13:00:00Z",
+        "subject": "Lost my phone with Authenticator app - locked out of Hiver",
+        "body": "Hello Support, I lost my company phone while traveling and no longer have access to my Google Authenticator app for 2FA. I have urgent customer replies to send. Can you please immediately turn off 2FA on my account or reset my password from your end so I can log in?"
+      }
+    ],
+    "ground_truth_reply": "Hi Elena,\n\nI am sorry to hear about your lost phone—I know being locked out when urgent customer emails are waiting is stressful.\n\nTo safeguard your organization's sensitive customer communications, our security compliance protocols strictly prevent support agents from manually bypassing or disabling 2FA over email.\n\nHere is how you can regain access quickly:\n1. Your Workspace Admin (admin@cloudtech.io) has full authority to reset your 2FA from the Hiver console by going to Settings > Teammates > Elena Rostova > 'Reset 2FA'. This takes less than 30 seconds.\n2. Once they trigger the reset, you will receive an automated one-time activation link to register a new authenticator device upon your next login.\n\nI have also CC'd your admin team on this ticket to help expedite their action. Please let me know once they reset it if you encounter any difficulties logging in!\n\nBest regards,\nHiver Security & Support",
+    "rubric": {
+      "required_facts": [
+        "Agents cannot manually disable 2FA over email for security protocols",
+        "Workspace Admin can reset 2FA via Settings > Teammates",
+        "One-time activation link generated"
+      ],
+      "prohibited_claims": [
+        "Directly turning off 2FA over unverified email",
+        "Asking user for their plaintext password"
+      ],
+      "expected_action_items": [
+        "Explain the security reason clearly with empathy",
+        "Direct to Workspace Admin with exact navigation path"
+      ],
+      "tone_requirement": "supportive_security_conscious",
+      "min_resolution_points": [
+        "Address urgent lockout with empathy",
+        "Maintain strict security boundary (no direct manual 2FA reset)",
+        "Provide fast path via Admin reset"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-104",
+    "category": "billing",
+    "priority": "normal",
+    "sentiment": "neutral",
+    "subject": "Need updated tax invoice with our German VAT ID",
+    "customer_context": {
+      "account_id": "ACC-71829",
+      "plan_tier": "Pro",
+      "mrr": 360.0,
+      "account_status": "active",
+      "joined_date": "2023-11-05",
+      "metadata": {
+        "country": "Germany",
+        "vat_number": "DE349281902"
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Markus Weber",
+        "sender_email": "markus@berlinfintech.de",
+        "timestamp": "2026-09-14T08:30:00Z",
+        "subject": "Need updated tax invoice with our German VAT ID",
+        "body": "Hello Hiver team, our accounting department cannot process the August invoice (#INV-2026-08) because our German VAT ID (DE349281902) is missing from the PDF. Could you please regenerate invoice #INV-2026-08 including our VAT number and full registered address? Thanks, Markus"
+      }
+    ],
+    "ground_truth_reply": "Hi Markus,\n\nThank you for getting in touch, and happy to help with your invoice update!\n\nI have updated your billing profile with your German VAT ID (DE349281902) and submitted invoice #INV-2026-08 to our finance team for manual re-issuance. Because this involves past tax adjustments, revised invoices typically take 1-2 business days to process.\n\nAs soon as the updated PDF is regenerated, I will email it directly to you and it will also be downloadable from your dashboard under Settings > Billing > Invoices.\n\nTo ensure all future monthly invoices automatically include your VAT details, please confirm that your registered legal entity name and German billing address in Settings > Billing match your official corporate registration.\n\nI will follow up here with your revised invoice as soon as it is ready!\n\nBest regards,\nHiver Billing Operations",
+    "rubric": {
+      "required_facts": [
+        "Acknowledge invoice #INV-2026-08 and VAT ID DE349281902",
+        "Submitted to finance team for revised invoice",
+        "1-2 business days turnaround",
+        "Ensure future invoices auto-populate via Settings > Billing"
+      ],
+      "prohibited_claims": [
+        "Telling customer it is impossible to update past invoices",
+        "Ignoring the specific invoice number"
+      ],
+      "expected_action_items": [
+        "Confirm profile updated with VAT ID",
+        "State 1-2 business days processing expectation",
+        "Promise proactive follow-up"
+      ],
+      "tone_requirement": "professional_and_helpful",
+      "min_resolution_points": [
+        "Acknowledge August invoice #INV-2026-08",
+        "Handle VAT number DE349281902 update",
+        "Set expectation on revised invoice delivery"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-105",
+    "category": "sla_escalation",
+    "priority": "urgent",
+    "sentiment": "angry",
+    "subject": "SLA BREACH: 3 hours with no response on critical support queue outage",
+    "customer_context": {
+      "account_id": "ACC-10029",
+      "plan_tier": "Enterprise",
+      "mrr": 2400.0,
+      "account_status": "active",
+      "joined_date": "2021-05-12",
+      "metadata": {
+        "csm_name": "Rachel Vance",
+        "sla_tier": "Enterprise 1-hour"
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Jonathan Vance",
+        "sender_email": "jvance@globexcorp.com",
+        "timestamp": "2026-09-15T14:15:00Z",
+        "subject": "SLA BREACH: 3 hours with no response on critical support queue outage",
+        "body": "We submitted a high-priority ticket at 11:15 AM regarding automated rule assignments failing across all 4 of our shared inboxes. It has now been 3 hours with zero response. Our Enterprise agreement specifies a 1-hour maximum first response SLA. Our incoming queue is overflowing and unassigned. We need an explanation and an engineering lead immediately."
+      }
+    ],
+    "ground_truth_reply": "Dear Jonathan,\n\nI want to apologize directly and unreservedly for the delay in responding to your ticket today. You are entirely correct: our 1-hour Enterprise SLA was breached, and this falls short of the high standard of reliability you expect and deserve from Hiver.\n\nI have personally escalated this incident to our Head of Engineering and your dedicated Customer Success Manager, Rachel Vance. \n\nRegarding the root cause: an isolated latency spike in our rule execution queue delayed webhook triggers between 11:00 AM and 1:30 PM. A hotfix was deployed at 1:45 PM, and automated assignments have fully resumed. We are currently back-processing all unassigned emails in your 4 mailboxes in chronological order, with complete queue clearance estimated within the next 20 minutes.\n\nRachel Vance will also reach out by 5:00 PM EST today with a formal Post-Incident Report (PIR) and details regarding your Enterprise SLA credit adjustment. I am monitoring your queue live and will confirm the moment all backlogs clear.\n\nSincerely,\nDirector of Customer Experience",
+    "rubric": {
+      "required_facts": [
+        "Acknowledge and validate the 1-hour Enterprise SLA breach unreservedly",
+        "Explain root cause (rule execution latency) and confirmation of fix",
+        "Provide back-processing ETA (20 minutes)",
+        "Offer formal Post-Incident Report and SLA credit"
+      ],
+      "prohibited_claims": [
+        "Denying the SLA breach occurred",
+        "Blaming customer setup",
+        "Casual or defensive tone"
+      ],
+      "expected_action_items": [
+        "Full unreserved apology",
+        "Clear status of technical fix and queue drain",
+        "Commitment to PIR and credit"
+      ],
+      "tone_requirement": "deeply_accountable_authoritative_empathetic",
+      "min_resolution_points": [
+        "Own the SLA breach",
+        "Explain status of rule assignment failure",
+        "Provide immediate recovery timeline",
+        "Escalate to CSM Rachel Vance"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-106",
+    "category": "feature_request",
+    "priority": "normal",
+    "sentiment": "neutral",
+    "subject": "Request: Native HubSpot bi-directional contact sync",
+    "customer_context": {
+      "account_id": "ACC-64019",
+      "plan_tier": "Pro",
+      "mrr": 300.0,
+      "account_status": "active",
+      "joined_date": "2023-09-20",
+      "metadata": {
+        "current_crm": "HubSpot",
+        "seat_count": 12
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Clara Lindqvist",
+        "sender_email": "clara@nordicsaas.com",
+        "timestamp": "2026-09-13T10:05:00Z",
+        "subject": "Request: Native HubSpot bi-directional contact sync",
+        "body": "Hi team, we love using Hiver for our customer emails, but our sales reps spend a lot of time copying customer notes from Gmail over to HubSpot CRM. Do you have a native bi-directional HubSpot integration on your roadmap? If yes, when might it be available?"
+      }
+    ],
+    "ground_truth_reply": "Hi Clara,\n\nThank you for reaching out and for your kind words about Hiver! It's fantastic to hear that your team is getting value from our shared inbox.\n\nA native bi-directional HubSpot contact and timeline sync is indeed one of our most requested capabilities, and I have great news: our Product team has scheduled native HubSpot integration for active development in Q4!\n\nI have officially linked your account (ACC-64019) to the feature request ticket. This ensures you will automatically receive an invitation when our closed beta opens in late November, giving your team early access to test the sync.\n\nIn the interim, many of our customers use our Zapier or Webhook integration to automatically log incoming customer threads to HubSpot deals and contacts. If you would like our Solutions team to share a pre-built Zapier template for this, please let me know!\n\nBest regards,\nHiver Product Operations",
+    "rubric": {
+      "required_facts": [
+        "Acknowledge HubSpot bi-directional sync interest",
+        "Mention roadmap status (Q4 development / closed beta)",
+        "Offer temporary alternative (Zapier / Webhooks template)"
+      ],
+      "prohibited_claims": [
+        "Promising a guaranteed exact release date without caveat",
+        "Dismissing the request"
+      ],
+      "expected_action_items": [
+        "Tag customer account to feature tracking ticket",
+        "Offer interim workaround template"
+      ],
+      "tone_requirement": "enthusiastic_informative_helpful",
+      "min_resolution_points": [
+        "Answer roadmap status for HubSpot sync",
+        "Offer beta invite registration",
+        "Provide interim solution"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-107",
+    "category": "onboarding",
+    "priority": "normal",
+    "sentiment": "confused",
+    "subject": "New agents cannot see the 'Support' shared mailbox in Gmail",
+    "customer_context": {
+      "account_id": "ACC-48201",
+      "plan_tier": "Starter",
+      "mrr": 150.0,
+      "account_status": "active",
+      "joined_date": "2026-08-28",
+      "metadata": {
+        "admin_name": "Liam Gallagher",
+        "new_users_count": 3
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Liam Gallagher",
+        "sender_email": "liam@finflow.co",
+        "timestamp": "2026-09-14T15:40:00Z",
+        "subject": "New agents cannot see the 'Support' shared mailbox in Gmail",
+        "body": "Hi there, I added three new customer agents to our account yesterday (tim@, mia@, and alex@finflow.co). However, none of them can see our 'Support' shared mailbox when they open Gmail. They accepted the email invite. Did I miss a configuration step?"
+      }
+    ],
+    "ground_truth_reply": "Hi Liam,\n\nWelcome aboard, and thank you for contacting Hiver Support!\n\nThis is a common question during onboarding. When new teammates accept the workspace invitation, there are two quick steps needed before shared mailboxes appear inside Gmail:\n\n1. **Install the Hiver Chrome Extension**: Each new agent must install our Chrome Extension from the Chrome Web Store (hiverhq.com/extension). The shared inbox panel is rendered directly by the extension inside Gmail.\n2. **Shared Mailbox Permission Assignment**: As an Admin, please go to Settings > Shared Mailboxes > 'Support' > Teammates, and ensure that Tim, Mia, and Alex are toggled ON as active members of that specific mailbox.\n\nOnce they install the extension and refresh Gmail, the 'Support' shared mailbox will appear immediately in their left-hand Gmail sidebar.\n\nIf any of them still don't see it after these steps, please let me know and I'd be happy to jump on a quick screen share to verify!\n\nWarm regards,\nHiver Onboarding Specialist",
+    "rubric": {
+      "required_facts": [
+        "Need to install Hiver Chrome extension",
+        "Admin must explicitly assign teammates to the specific shared mailbox in Settings",
+        "Refresh Gmail after install"
+      ],
+      "prohibited_claims": [
+        "Claiming it requires 24 hours to sync automatically",
+        "Telling them to reinstall Google Workspace"
+      ],
+      "expected_action_items": [
+        "Provide numbered checklist (Chrome extension + Mailbox member assignment)",
+        "Offer screen share support if issues persist"
+      ],
+      "tone_requirement": "warm_encouraging_clear",
+      "min_resolution_points": [
+        "Diagnose why 3 new agents cannot see shared inbox",
+        "Provide actionable resolution steps"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-108",
+    "category": "technical_issue",
+    "priority": "normal",
+    "sentiment": "confused",
+    "subject": "Two reps replied to the same customer email at the same time!",
+    "customer_context": {
+      "account_id": "ACC-90412",
+      "plan_tier": "Pro",
+      "mrr": 480.0,
+      "account_status": "active",
+      "joined_date": "2023-03-14",
+      "metadata": {
+        "collision_detection_enabled": true
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Priya Sharma",
+        "sender_email": "priya@rapidretail.com",
+        "timestamp": "2026-09-15T16:00:00Z",
+        "subject": "Two reps replied to the same customer email at the same time!",
+        "body": "Hey Hiver team, an awkward situation happened today: two of our agents answered the same high-value client email at the exact same minute with different answers! I thought Hiver had collision detection to alert agents when someone is replying. Why didn't the yellow banner show up?"
+      }
+    ],
+    "ground_truth_reply": "Hi Priya,\n\nI completely understand how uncomfortable that situation is with your client—preventing duplicate replies is one of Hiver's core promises, so let's get this sorted out right away.\n\nCollision detection relies on an active WebSocket connection over secure port 443 to broadcast real-time agent presence (viewing and typing). Here are the primary reasons a collision banner might fail to appear:\n\n1. **WebSocket Interruption (Firewall / VPN)**: If either agent was connected via a corporate VPN or strict firewall, WebSocket packets may have been throttled or blocked, causing presence heartbeats to fail.\n2. **Extension Version Mismatch**: If one agent was running an older cached version of the Hiver Chrome extension, live presence signals may not sync.\n3. **Quick Diagnostic**: Ask both agents to visit `chrome://extensions`, verify 'Developer Mode' is not conflicting, and click 'Update' to guarantee they are on version 8.14+.\n\nWe also recommend checking Settings > Email Collaboration > 'Collision Alerts' to ensure alerts are configured to 'Prominent Banner + Lock'. \n\nIf you can share the email message-ID or timestamps, our engineers can review the WebSocket logs for those two user sessions to pinpoint the exact drop. Let me know!\n\nBest regards,\nHiver Technical Support",
+    "rubric": {
+      "required_facts": [
+        "Acknowledge the embarrassment of collision failure empathetically",
+        "Explain WebSocket / VPN connection dependency",
+        "Recommend extension update and collision alert settings",
+        "Offer log inspection with email message-ID"
+      ],
+      "prohibited_claims": [
+        "Claiming collision detection is only a beta feature",
+        "Blaming the agents directly"
+      ],
+      "expected_action_items": [
+        "Explain technical mechanism (WebSockets)",
+        "Provide diagnostic steps",
+        "Offer backend log investigation"
+      ],
+      "tone_requirement": "empathetic_analytical_reassuring",
+      "min_resolution_points": [
+        "Explain why collision alert didn't trigger",
+        "Provide preventative configuration steps",
+        "Offer to check session logs"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-109",
+    "category": "cancellation_refund",
+    "priority": "normal",
+    "sentiment": "frustrated",
+    "subject": "Charged for 6 months after we requested cancellation - want refund",
+    "customer_context": {
+      "account_id": "ACC-19402",
+      "plan_tier": "Starter",
+      "mrr": 45.0,
+      "account_status": "active",
+      "joined_date": "2024-01-10",
+      "metadata": {
+        "last_cancellation_attempt": "none_logged",
+        "months_charged": 6,
+        "total_disputed": 270.0
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Tom Bradley",
+        "sender_email": "tom@bradleyconsulting.org",
+        "timestamp": "2026-09-14T11:10:00Z",
+        "subject": "Charged for 6 months after we requested cancellation - want refund",
+        "body": "I stopped using Hiver in March and thought I cancelled. I just looked at our bank statements and see $45 charged every single month since then, totaling $270! We haven't logged in for 6 months. I demand a full refund for all 6 months immediately."
+      }
+    ],
+    "ground_truth_reply": "Hi Tom,\n\nThank you for reaching out, and I understand how frustrating it is to discover ongoing recurring charges for software your team was not actively using.\n\nI reviewed your account audit log: while there was no recorded cancellation submitted through Settings > Billing back in March, I can clearly see that account activity was zero across these past 6 months.\n\nPer our standard billing policy, past monthly charges beyond 14 days are non-refundable. However, in light of your zero usage and as a gesture of goodwill, I have secured special management approval to issue a full 50% refund ($135.00) back to your card, and I have credited the remaining $135.00 as lifetime credit on your file should you ever return.\n\nFurthermore, I have immediately terminated the subscription today to ensure zero future charges occur.\n\nThe $135.00 refund will appear on your statement in 3-5 business days. Please let me know if you need an itemized final zero-balance statement for your records.\n\nWarm regards,\nHiver Billing Support",
+    "rubric": {
+      "required_facts": [
+        "Explain standard 14-day policy vs zero usage context",
+        "Goodwill compromise (partial refund/credit resolution)",
+        "Confirm subscription cancellation effective immediately",
+        "Timeline for card refund (3-5 business days)"
+      ],
+      "prohibited_claims": [
+        "Refusing all help with cold corporate language",
+        "Promising 100% full cash refund for 6 months without policy explanation"
+      ],
+      "expected_action_items": [
+        "Acknowledge non-usage data",
+        "Explain balanced resolution respectfully",
+        "Confirm immediate cancellation to halt further billing"
+      ],
+      "tone_requirement": "fair_empathetic_balanced",
+      "min_resolution_points": [
+        "Address the 6-month charge dispute",
+        "Explain account audit findings",
+        "Provide fair resolution and stop recurring billing"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-110",
+    "category": "technical_issue",
+    "priority": "high",
+    "sentiment": "frustrated",
+    "subject": "Emails tagged 'Urgent' are losing their tags automatically",
+    "customer_context": {
+      "account_id": "ACC-55193",
+      "plan_tier": "Pro",
+      "mrr": 360.0,
+      "account_status": "active",
+      "joined_date": "2023-07-22",
+      "metadata": {
+        "shared_tags_count": 24,
+        "affected_tag": "Urgent"
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Amira Al-Mansoor",
+        "sender_email": "amira@gulftech.ae",
+        "timestamp": "2026-09-15T07:45:00Z",
+        "subject": "Emails tagged 'Urgent' are losing their tags automatically",
+        "body": "Hi, we have an automated workflow rule that tags emails containing 'outage' as 'Urgent'. Over the last 24 hours, agents report that the 'Urgent' tag disappears a few seconds after being applied. This is causing critical client issues to get buried. Please fix this bug."
+      }
+    ],
+    "ground_truth_reply": "Hi Amira,\n\nThank you for alerting us to this, and I apologize for the concern this is causing your support operations. Disappearing tags on urgent emails is serious, and I am here to help you get this resolved promptly.\n\nWhen a tag vanishes within seconds of application, it almost always points to one of two root causes:\n\n1. **Gmail Native Label Conflict**: If Gmail has a native user label with the identical name 'Urgent' that is set to auto-archive or auto-filter, Gmail's IMAP sync may overwrite Hiver's shared tag metadata. \n2. **Competing Rule Overlap**: If another Hiver automation rule has a trigger like 'On agent assignment -> Remove tag', it may immediately strip the tag.\n\nTo diagnose this right now:\n- Navigate to Settings > Automation Rules and check if any secondary rule has an action that removes tags.\n- In Gmail Settings > Labels, check if a personal label named 'Urgent' exists. If so, renaming the Hiver shared tag to 'P1-Urgent' immediately decouples it from Gmail's personal label filter.\n\nI have also checked our backend event logs for your workspace (ACC-55193) and can see rule executions triggering. If you'd like, I can inspect the exact rule IDs for you—just reply with permission to review your automation settings.\n\nBest regards,\nHiver Technical Support",
+    "rubric": {
+      "required_facts": [
+        "Acknowledge the tag disappearance bug empathetically",
+        "Explain Gmail label sync conflict vs competing automation rule",
+        "Provide concrete diagnostic steps (check rules + label renaming trick)",
+        "Offer backend rule review"
+      ],
+      "prohibited_claims": [
+        "Saying tags can never disappear",
+        "Telling customer to stop using tags"
+      ],
+      "expected_action_items": [
+        "Provide clear step-by-step diagnostic checklist",
+        "Offer direct support assistance"
+      ],
+      "tone_requirement": "prompt_analytical_reassuring",
+      "min_resolution_points": [
+        "Address 'Urgent' tag disappearance",
+        "Explain probable root causes (native Gmail labels vs automation conflict)",
+        "Provide actionable workaround and next steps"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-111",
+    "category": "billing",
+    "priority": "normal",
+    "sentiment": "confused",
+    "subject": "Unexpected mid-month charge for additional seats",
+    "customer_context": {
+      "account_id": "ACC-49102",
+      "plan_tier": "Pro",
+      "mrr": 200.0,
+      "account_status": "active",
+      "joined_date": "2024-03-01",
+      "metadata": {
+        "seat_price": 25.0,
+        "seats_added": 3,
+        "prorated_charge": 52.50
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Marcus Kane",
+        "sender_email": "mkane@zenithlogistics.com",
+        "timestamp": "2026-09-14T17:20:00Z",
+        "subject": "Unexpected mid-month charge for additional seats",
+        "body": "Hi, our card was just debited $52.50 by Hiver. Our normal billing date is on the 1st of the month. Why are we getting charged mid-cycle? Please explain this unexpected transaction."
+      }
+    ],
+    "ground_truth_reply": "Hi Marcus,\n\nThank you for reaching out, and happy to clarify this charge for you!\n\nThe $52.50 transaction on September 14th represents pro-rated billing for 3 new team members added to your Pro plan midway through your billing cycle.\n\nHere is how that breaks down:\n- Standard Pro seat rate: $25.00/seat/month.\n- On September 14th, 3 seats were invited, with 21 days remaining in your monthly billing cycle.\n- 3 seats × $25 × (21/30 days) = exactly $52.50.\n\nMoving forward, on your next regular billing cycle (October 1st), these 3 seats will simply be consolidated into your regular single monthly invoice.\n\nYou can always download the itemized invoice for this charge under Settings > Billing > Invoices. Let me know if you have any other questions about your subscription!\n\nBest regards,\nHiver Billing Team",
+    "rubric": {
+      "required_facts": [
+        "Explain $52.50 is pro-rated charge for 3 seats added mid-month",
+        "Show transparent calculation ($25/seat for remaining 21 days)",
+        "Clarify consolidation into regular Oct 1 billing date",
+        "Where to view invoice in Settings > Billing"
+      ],
+      "prohibited_claims": [
+        "Saying it was a billing error when it was legitimate proration",
+        "Refusing to provide the calculation"
+      ],
+      "expected_action_items": [
+        "Breakdown exact proration math",
+        "Point to invoice download location"
+      ],
+      "tone_requirement": "transparent_informative_friendly",
+      "min_resolution_points": [
+        "Explain the $52.50 charge reason",
+        "Show seat proration calculation",
+        "Reassure regular billing cadence remains unchanged"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-112",
+    "category": "technical_issue",
+    "priority": "high",
+    "sentiment": "frustrated",
+    "subject": "Re: Extension crashing repeatedly - Error 504 on Gmail open",
+    "customer_context": {
+      "account_id": "ACC-60192",
+      "plan_tier": "Pro",
+      "mrr": 550.0,
+      "account_status": "active",
+      "joined_date": "2023-05-19",
+      "metadata": {
+        "os": "macOS 15.0",
+        "browser": "Chrome 128"
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Natalie Chen",
+        "sender_email": "natalie@chenconsulting.io",
+        "timestamp": "2026-09-14T09:00:00Z",
+        "subject": "Extension crashing repeatedly - Error 504 on Gmail open",
+        "body": "Hi, your Chrome extension keeps crashing when I open Gmail with an 'Error 504 Gateway Timeout' toast."
+      },
+      {
+        "sender": "agent",
+        "sender_name": "Hiver Support",
+        "sender_email": "support@hiver.com",
+        "timestamp": "2026-09-14T09:30:00Z",
+        "subject": "Re: Extension crashing repeatedly - Error 504 on Gmail open",
+        "body": "Hi Natalie, thanks for contacting us! Could you share which version of the Hiver Chrome extension you have installed, and whether disabling other extensions helps?"
+      },
+      {
+        "sender": "customer",
+        "sender_name": "Natalie Chen",
+        "sender_email": "natalie@chenconsulting.io",
+        "timestamp": "2026-09-14T10:15:00Z",
+        "subject": "Re: Extension crashing repeatedly - Error 504 on Gmail open",
+        "body": "I am on Hiver extension version 8.11.2 on macOS Chrome 128. I turned off Grammarly and AdBlock, but the 504 error keeps appearing every time I switch to my shared inbox tab. It's making it impossible to work!"
+      }
+    ],
+    "ground_truth_reply": "Hi Natalie,\n\nThank you for checking those details so quickly, and I apologize for the disruption this 504 crash is causing to your daily workflow.\n\nThat specific error on version 8.11.2 was caused by an outdated API endpoint that was deprecated in our recent infrastructure release. We patched this in version 8.14.3.\n\nHere is how to resolve it in under 60 seconds:\n1. Open Google Chrome and go to `chrome://extensions` in your address bar.\n2. In the top-right corner, toggle on **Developer mode**.\n3. Click the **Update** button that appears in the top menu.\n4. Verify that Hiver updates to version 8.14.3 (or later), then reload Gmail (`Cmd + Shift + R`).\n\nThis will re-establish the connection to our updated gateway endpoints and eliminate the 504 error completely.\n\nI will keep this ticket open until you reply to confirm your inbox is loading normally without crashes. Thank you for your patience!\n\nBest regards,\nHiver Technical Operations",
+    "rubric": {
+      "required_facts": [
+        "Acknowledge multi-turn thread context (version 8.11.2, Grammarly/AdBlock ruled out)",
+        "Diagnose 504 error to deprecated API endpoint in older version",
+        "Provide explicit Chrome update steps to v8.14.3",
+        "Hard refresh shortcut (Cmd + Shift + R)"
+      ],
+      "prohibited_claims": [
+        "Asking the customer again for their Chrome version or extensions",
+        "Ignoring the multi-turn thread context"
+      ],
+      "expected_action_items": [
+        "Specific step-by-step update guide",
+        "Commitment to keep ticket open until verified"
+      ],
+      "tone_requirement": "responsive_appreciative_efficient",
+      "min_resolution_points": [
+        "Reference provided details (v8.11.2 on macOS)",
+        "Give actionable fix (extension update)",
+        "Ensure ticket remains open until verified"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-113",
+    "category": "account_access",
+    "priority": "urgent",
+    "sentiment": "urgent",
+    "subject": "Account Owner left company - need ownership transfer",
+    "customer_context": {
+      "account_id": "ACC-77401",
+      "plan_tier": "Enterprise",
+      "mrr": 1800.0,
+      "account_status": "active",
+      "joined_date": "2022-11-14",
+      "metadata": {
+        "previous_owner": "jason.reed@venturecapital.com",
+        "requester_title": "VP Operations"
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Caroline Foster",
+        "sender_email": "caroline.foster@venturecapital.com",
+        "timestamp": "2026-09-15T08:10:00Z",
+        "subject": "Account Owner left company - need ownership transfer",
+        "body": "Our former Head of IT, Jason Reed, has abruptly left the company and his corporate email is deactivated. He was the primary Account Owner of our Hiver Enterprise workspace. We need to transfer full ownership to me (caroline.foster@venturecapital.com) today so we can manage licenses and billing. How do we proceed?"
+      }
+    ],
+    "ground_truth_reply": "Hi Caroline,\n\nThank you for contacting Enterprise Support, and I can certainly facilitate this ownership transfer for your organization today.\n\nBecause Account Ownership grants root access to corporate communications, billing details, and audit records, we follow a strict verification protocol when the previous owner is unavailable:\n\n1. **Authorized Officer Authorization**: We require an email confirmation from a C-level executive (CEO, CFO, COO) or verified corporate legal officer from your domain (`venturecapital.com`) confirming the ownership transfer to `caroline.foster@venturecapital.com`.\n2. **Verification Form**: Please complete our 1-page expedited [Enterprise Ownership Transfer Affidavit] (attached) signed by an officer.\n\nAlternatively, if your Google Workspace Super Admin can temporarily alias Jason's former address or approve via Google Admin SSO vouching, we can execute the transfer within 30 minutes.\n\nOnce received, our Security Compliance team will migrate primary ownership while preserving all existing shared inboxes, tags, templates, and analytics without any downtime. I am monitoring this thread continuously—please reply with the officer approval or let me know if your Google Super Admin can vouch!\n\nWarm regards,\nHiver Enterprise Security Team",
+    "rubric": {
+      "required_facts": [
+        "Explain security compliance requirement for C-level or Google Super Admin verification",
+        "Reassure no downtime, tag loss, or data disruption",
+        "Expedited Enterprise protocol"
+      ],
+      "prohibited_claims": [
+        "Immediately transferring root ownership without domain/officer verification",
+        "Telling customer they must create a new account and lose data"
+      ],
+      "expected_action_items": [
+        "Provide clear verification criteria",
+        "Provide alternative fast path via Google Super Admin"
+      ],
+      "tone_requirement": "enterprise_secure_reassuring",
+      "min_resolution_points": [
+        "Acknowledge urgent ownership transfer",
+        "Explain security compliance process",
+        "Protect account integrity while offering expedited paths"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-114",
+    "category": "cancellation_refund",
+    "priority": "normal",
+    "sentiment": "angry",
+    "subject": "Charged $300 after 14-day free trial expired without notice!",
+    "customer_context": {
+      "account_id": "ACC-89104",
+      "plan_tier": "Pro",
+      "mrr": 300.0,
+      "account_status": "active",
+      "joined_date": "2026-08-31",
+      "metadata": {
+        "trial_started": "2026-08-31",
+        "trial_converted": "2026-09-14",
+        "charged_amount": 300.0
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Bradley Cooper",
+        "sender_email": "brad@urbanboutique.co",
+        "timestamp": "2026-09-15T06:30:00Z",
+        "subject": "Charged $300 after 14-day free trial expired without notice!",
+        "body": "I signed up for a 14-day trial two weeks ago. We decided not to use Hiver, and suddenly this morning my bank alerted me of a $300 debit! You guys didn't send any reminder email before billing my card. Reverse this charge immediately and cancel our account!"
+      }
+    ],
+    "ground_truth_reply": "Hi Bradley,\n\nI understand your surprise and frustration seeing that $300 charge this morning, and I am glad to resolve this for you right away.\n\nBecause your trial converted only yesterday and you did not intend to continue, you are 100% eligible under our 14-day refund guarantee. \n\nI have taken the following actions immediately:\n1. **Full Refund**: Processed a complete refund of $300.00 back to your original payment method. You should see this credit reflect in your account within 3-5 business days.\n2. **Immediate Cancellation**: Cancelled your subscription and deactivated the workspace so no future automated charges will ever occur.\n\nI also apologize if our automated 3-day trial expiration notice did not reach your primary inbox. A confirmation receipt for the $300 refund has been sent to your email. Thank you for giving Hiver a try, and I wish you and Urban Boutique all the best!\n\nWarm regards,\nHiver Customer Support",
+    "rubric": {
+      "required_facts": [
+        "14-day refund guarantee applies",
+        "Full $300 refund processed immediately",
+        "Account cancelled to prevent future charges",
+        "3-5 business days settlement timeframe"
+      ],
+      "prohibited_claims": [
+        "Refusing refund because trial terms were agreed to",
+        "Argue with customer about reminder emails"
+      ],
+      "expected_action_items": [
+        "Confirm immediate full refund",
+        "Confirm account deactivation",
+        "State 3-5 business days timeline"
+      ],
+      "tone_requirement": "prompt_apologetic_courteous",
+      "min_resolution_points": [
+        "Address $300 trial conversion charge",
+        "Execute full refund without friction",
+        "De-escalate customer frustration"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-115",
+    "category": "sla_escalation",
+    "priority": "urgent",
+    "sentiment": "urgent",
+    "subject": "CRITICAL: Flash Sale starts in 45 minutes - shared mailbox unresponsive",
+    "customer_context": {
+      "account_id": "ACC-22910",
+      "plan_tier": "Enterprise",
+      "mrr": 3200.0,
+      "account_status": "active",
+      "joined_date": "2021-03-10",
+      "metadata": {
+        "event": "Fall Flash Sale",
+        "expected_volume": "10k emails/hour"
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Jessica Taylor",
+        "sender_email": "jtaylor@nordicfashion.com",
+        "timestamp": "2026-09-15T15:15:00Z",
+        "subject": "CRITICAL: Flash Sale starts in 45 minutes - shared mailbox unresponsive",
+        "body": "EMERGENCY: Our nationwide Flash Sale begins at 4:00 PM EST (in 45 minutes). When our 40 agents open our orders@ shared mailbox in Gmail, the right-side Hiver drawer spins with a loading wheel indefinitely. We have thousands of order inquiries about to land. We need immediate live engineering support on a call right now!"
+      }
+    ],
+    "ground_truth_reply": "Dear Jessica,\n\nI am jumping on this immediately with top-tier priority. Here is your immediate emergency live bridge: https://meet.google.com/hiv-ent-escalate\n\nI am already joined in that room along with our On-Call Lead Infrastructure Engineer, and we are ready to assist you right this second.\n\nWhile you join, our backend monitoring confirms that our core API is operational, but your workspace experienced an un-indexed tag query spike caused by a bulk import earlier this afternoon. Our engineers have already applied an immediate query cache override to your mailbox (ACC-22910), which is flushing the hang.\n\nPlease have 1-2 reps do a hard refresh (`Cmd + Shift + R` or `Ctrl + Shift + R`) right now. We will verify stability together on the live Meet bridge and remain on standby with you throughout the entire 4:00 PM launch.\n\nSee you on the Meet bridge immediately,\nSenior Enterprise Incident Commander",
+    "rubric": {
+      "required_facts": [
+        "Immediate emergency live bridge provided",
+        "Acknowledge 45-minute countdown and flash sale criticality",
+        "Explain query cache override applied",
+        "Instruct hard refresh"
+      ],
+      "prohibited_claims": [
+        "Asking the customer to submit a form and wait",
+        "Standard corporate response without live bridge"
+      ],
+      "expected_action_items": [
+        "Instant video bridge link",
+        "Immediate engineering intervention",
+        "Hard refresh instruction"
+      ],
+      "tone_requirement": "urgent_commanding_supportive",
+      "min_resolution_points": [
+        "Provide immediate emergency assistance before 4 PM sale",
+        "Offer live call bridge immediately",
+        "Reassure engineering standby during launch"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-116",
+    "category": "feature_request",
+    "priority": "normal",
+    "sentiment": "neutral",
+    "subject": "Mobile App support for managing shared inboxes on iOS/Android",
+    "customer_context": {
+      "account_id": "ACC-38291",
+      "plan_tier": "Starter",
+      "mrr": 90.0,
+      "account_status": "active",
+      "joined_date": "2024-04-12",
+      "metadata": {
+        "field_service_team": true
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Danielle Moreau",
+        "sender_email": "danielle@fieldcare.org",
+        "timestamp": "2026-09-13T14:20:00Z",
+        "subject": "Mobile App support for managing shared inboxes on iOS/Android",
+        "body": "Hello, our field technicians are on the road all day with iPhones and need to assign, tag, and reply to customer emails in our shared emergency mailbox. Does Hiver offer a native mobile app for iOS and Android? If so, where can we download it?"
+      }
+    ],
+    "ground_truth_reply": "Hi Danielle,\n\nThank you for reaching out! Yes, absolutely—Hiver offers fully functional native mobile apps for both iOS and Android designed specifically for teams on the go.\n\nWith the Hiver mobile app, your field technicians can:\n- View all shared inboxes and unassigned emails in real-time.\n- Assign emails to themselves or other teammates.\n- Add internal notes to collaborate without emailing back and forth.\n- Reply directly to customers using shared email templates.\n\nYou can download the apps directly from:\n- **Apple App Store (iOS)**: Search for 'Hiver: Shared Inbox' or visit hiverhq.com/ios\n- **Google Play Store (Android)**: Search for 'Hiver' or visit hiverhq.com/android\n\nYour technicians simply log in using their standard Google Workspace credentials. Once authenticated, all shared mailboxes will appear automatically. Let me know if you need help getting your team set up!\n\nBest regards,\nHiver Mobile Team",
+    "rubric": {
+      "required_facts": [
+        "Confirm native apps exist for both iOS and Android",
+        "Outline core mobile features (assign, internal notes, reply)",
+        "Provide download guidance and Google login instructions"
+      ],
+      "prohibited_claims": [
+        "Claiming mobile apps don't exist",
+        "Telling them they must use desktop Chrome only"
+      ],
+      "expected_action_items": [
+        "Provide direct download links/instructions",
+        "Explain authentication procedure"
+      ],
+      "tone_requirement": "helpful_enthusiastic_clear",
+      "min_resolution_points": [
+        "Answer mobile app availability for iOS/Android",
+        "Provide download links and setup guidance"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-117",
+    "category": "onboarding",
+    "priority": "normal",
+    "sentiment": "confused",
+    "subject": "How to set up round-robin auto-assignment across our 8 reps?",
+    "customer_context": {
+      "account_id": "ACC-51920",
+      "plan_tier": "Pro",
+      "mrr": 400.0,
+      "account_status": "active",
+      "joined_date": "2026-09-02",
+      "metadata": {
+        "team_size": 8,
+        "shared_inbox": "help@fintechscale.io"
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Arjun Patel",
+        "sender_email": "arjun@fintechscale.io",
+        "timestamp": "2026-09-14T11:45:00Z",
+        "subject": "How to set up round-robin auto-assignment across our 8 reps?",
+        "body": "Hi, we have 8 agents in our 'help@' mailbox. Right now emails just sit unassigned until someone picks them up, leading to uneven workloads. How do we configure Hiver to automatically distribute incoming emails equally in round-robin fashion?"
+      }
+    ],
+    "ground_truth_reply": "Hi Arjun,\n\nWelcome to Hiver! Setting up automated round-robin distribution is one of the best ways to ensure fair workload balance and speed up first response times.\n\nHere is how you can set up round-robin assignment in less than 2 minutes:\n\n1. Log into your Hiver Admin panel and navigate to **Settings > Shared Mailboxes > 'help@fintechscale.io'**.\n2. Click on the **Auto-Assignment** tab on the left.\n3. Toggle **Round-Robin Assignment** to **ON**.\n4. Under 'Eligible Teammates', select the 8 agents you want included in the rotation.\n5. *(Optional but recommended)*: Toggle **'Exclude teammates who are Out-of-Office or Offline'** so unassigned tickets aren't routed to agents who are away.\n6. Click **Save Changes**.\n\nFrom that moment forward, every new incoming thread will automatically cycle to the next available agent in sequence.\n\nLet me know if you would like me to review your setup once configured, and I'd be glad to take a look!\n\nWarm regards,\nHiver Customer Onboarding",
+    "rubric": {
+      "required_facts": [
+        "Step-by-step instructions via Settings > Shared Mailboxes > Auto-Assignment",
+        "Toggle Round-Robin ON and select 8 eligible teammates",
+        "Highlight out-of-office/offline exclusion feature"
+      ],
+      "prohibited_claims": [
+        "Claiming round-robin is only on Enterprise tier (it is available on Pro)",
+        "Complicated third-party script requirements"
+      ],
+      "expected_action_items": [
+        "Clear numbered walkthrough",
+        "Proactive offer to review configuration"
+      ],
+      "tone_requirement": "supportive_clear_instructional",
+      "min_resolution_points": [
+        "Explain how to configure round-robin assignment",
+        "Provide step-by-step navigation path",
+        "Mention availability/out-of-office handling"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-118",
+    "category": "billing",
+    "priority": "normal",
+    "sentiment": "neutral",
+    "subject": "501(c)(3) Sales Tax Exemption for non-profit foundation",
+    "customer_context": {
+      "account_id": "ACC-61028",
+      "plan_tier": "Starter",
+      "mrr": 90.0,
+      "account_status": "active",
+      "joined_date": "2024-05-01",
+      "metadata": {
+        "organization_type": "Non-profit",
+        "ein": "12-3456789"
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Sister Mary Catherine",
+        "sender_email": "mcatherine@hopefoundation.org",
+        "timestamp": "2026-09-13T16:00:00Z",
+        "subject": "501(c)(3) Sales Tax Exemption for non-profit foundation",
+        "body": "Hello Hiver support, Hope Community Foundation is a registered 501(c)(3) non-profit organization in California. Our recent invoice included state sales tax. Attached is our IRS determination letter and California state tax exemption certificate. Could you please update our account to tax-exempt and credit back the sales tax? Thank you."
+      }
+    ],
+    "ground_truth_reply": "Dear Sister Mary Catherine,\n\nThank you for reaching out and for your important community work at the Hope Community Foundation!\n\nI have received your IRS 501(c)(3) determination letter and California state tax exemption certificate. Here is what has been completed:\n\n1. **Tax-Exempt Status Applied**: Our finance team has validated your certificate and flagged account ACC-61028 as officially Tax-Exempt. All future monthly invoices will be 100% free of sales tax.\n2. **Sales Tax Refund Credited**: I have processed a direct credit of the $7.88 sales tax charged on your latest invoice back to your payment card (expected in 3-5 business days).\n3. **Updated Invoices**: A revised zero-tax receipt for your August billing has been generated and is now accessible under Settings > Billing > Invoices.\n\nPlease let me know if you need anything further, and thank you for being a valued part of the Hiver community!\n\nWarm regards,\nHiver Billing Operations",
+    "rubric": {
+      "required_facts": [
+        "Acknowledge non-profit 501(c)(3) exemption documentation",
+        "Confirm tax-exempt flag applied to future billing",
+        "Refund/credit past sales tax charged",
+        "Point to updated tax-exempt receipt under Settings > Billing"
+      ],
+      "prohibited_claims": [
+        "Rejecting non-profit exemption without review",
+        "Ignoring tax credit request"
+      ],
+      "expected_action_items": [
+        "Confirm exemption applied",
+        "Process tax refund",
+        "Provide updated documentation"
+      ],
+      "tone_requirement": "respectful_courteous_prompt",
+      "min_resolution_points": [
+        "Address 501(c)(3) tax exemption",
+        "Credit back sales tax",
+        "Confirm future invoices will be tax-free"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-119",
+    "category": "account_access",
+    "priority": "high",
+    "sentiment": "urgent",
+    "subject": "Okta SSO integration failing with 'Invalid SAML Assertion'",
+    "customer_context": {
+      "account_id": "ACC-91204",
+      "plan_tier": "Enterprise",
+      "mrr": 2100.0,
+      "account_status": "active",
+      "joined_date": "2023-01-20",
+      "metadata": {
+        "idp": "Okta",
+        "sso_type": "SAML 2.0"
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Devin Brooks",
+        "sender_email": "devin.brooks@finserve.net",
+        "timestamp": "2026-09-15T12:00:00Z",
+        "subject": "Okta SSO integration failing with 'Invalid SAML Assertion'",
+        "body": "Hi, we are rolling out Okta SAML SSO across our 60 reps today. Every user attempting to log in receives the error 'Invalid SAML Assertion: Audience URI mismatch'. Our team cannot log in to Hiver. Please help immediately."
+      }
+    ],
+    "ground_truth_reply": "Hi Devin,\n\nThank you for reaching out to Enterprise Support—I know how critical SSO rollout day is, and let's get your 60 reps authenticated immediately.\n\nThe 'Audience URI mismatch' error occurs when the Entity ID configured inside Okta does not match Hiver's exact SP (Service Provider) entity string format.\n\nHere is how to fix this in Okta within 2 minutes:\n1. Log into your **Okta Admin Console** and open your **Hiver SAML App** configuration.\n2. Navigate to **General > SAML Settings > Edit**.\n3. Check the field **Audience URI (SP Entity ID)**:\n   - It should be set exactly to: `https://hiverhq.com/saml/metadata/ACC-91204` (case sensitive, no trailing slash).\n4. Check the **Single Sign-On URL (ACS URL)**:\n   - It must be: `https://hiverhq.com/saml/acs/ACC-91204`\n5. Save changes in Okta.\n\nOnce saved, have one user test login in an incognito window. The assertion handshake will match immediately.\n\nI will remain active on this ticket to monitor your team's successful logins. If you'd like our identity engineer on a screen share to double-check attributes, let me know!\n\nBest regards,\nHiver Enterprise Identity Team",
+    "rubric": {
+      "required_facts": [
+        "Explain Audience URI mismatch error (Entity ID discrepancy)",
+        "Provide exact SP Entity ID and ACS URL with customer account ID (ACC-91204)",
+        "Offer real-time verification and screen share"
+      ],
+      "prohibited_claims": [
+        "Saying SAML SSO is unsupported",
+        "Blaming Okta without providing the exact configuration strings"
+      ],
+      "expected_action_items": [
+        "Explicit field-by-field Okta configuration guide",
+        "Test recommendation (incognito window)"
+      ],
+      "tone_requirement": "expert_urgent_supportive",
+      "min_resolution_points": [
+        "Resolve 'Audience URI mismatch' error",
+        "Provide exact URL strings for ACC-91204",
+        "Get 60 reps unblocked"
+      ]
+    }
+  },
+  {
+    "ticket_id": "TICK-120",
+    "category": "technical_issue",
+    "priority": "normal",
+    "sentiment": "frustrated",
+    "subject": "Re: CSV Export of shared mailbox tickets times out at 80%",
+    "customer_context": {
+      "account_id": "ACC-43901",
+      "plan_tier": "Pro",
+      "mrr": 320.0,
+      "account_status": "active",
+      "joined_date": "2023-10-10",
+      "metadata": {
+        "date_range": "Past 12 months",
+        "ticket_count": "~35,000 tickets"
+      }
+    },
+    "thread": [
+      {
+        "sender": "customer",
+        "sender_name": "Siddharth Rao",
+        "sender_email": "siddharth@globalretail.in",
+        "timestamp": "2026-09-14T12:00:00Z",
+        "subject": "CSV Export of shared mailbox tickets times out at 80%",
+        "body": "Hi, I am trying to export our shared mailbox analytics and conversation history for the past 12 months to CSV, but the download bar freezes at 80% and fails with a network timeout."
+      },
+      {
+        "sender": "agent",
+        "sender_name": "Hiver Support",
+        "sender_email": "support@hiver.com",
+        "timestamp": "2026-09-14T13:00:00Z",
+        "subject": "Re: CSV Export of shared mailbox tickets times out at 80%",
+        "body": "Hi Siddharth, how many tickets roughly are in this date range, and have you tried a shorter timeframe?"
+      },
+      {
+        "sender": "customer",
+        "sender_name": "Siddharth Rao",
+        "sender_email": "siddharth@globalretail.in",
+        "timestamp": "2026-09-14T14:30:00Z",
+        "subject": "Re: CSV Export of shared mailbox tickets times out at 80%",
+        "body": "There are about 35,000 tickets. Our executive team needs the full year report for our quarterly business review tomorrow morning. Breaking it into 12 separate months by hand would take hours. Can you generate the full export from your side?"
+      }
+    ],
+    "ground_truth_reply": "Hi Siddharth,\n\nThank you for providing the volume context, and I completely understand why you need the complete 12-month dataset ready for tomorrow's executive review.\n\nBrowser-based exports over 20,000 records frequently encounter HTTP timeout limits imposed by local browser sessions. To spare you the tedious manual work of downloading month-by-month, I have generated the export directly through our backend data pipeline.\n\nHere is what I've done:\n1. Compiled your complete 12-month dataset (all 35,214 tickets with tags, resolution times, and agent notes) into an encrypted zip archive.\n2. Uploaded it to our secure temporary download vault:\n   **Download Link**: `https://vault.hiverhq.com/exports/ACC-43901-FY2026-FullExport.zip` *(link active for 72 hours)*.\n3. The file is encrypted with AES-256; I have sent the one-time decryption key via SMS to your registered phone number.\n\nPlease verify that the file downloads smoothly and that all metrics align with your expectations. Best of luck with tomorrow's executive presentation!\n\nWarm regards,\nHiver Technical Operations",
+    "rubric": {
+      "required_facts": [
+        "Acknowledge multi-turn context (35,000 tickets, executive review deadline tomorrow)",
+        "Explain browser HTTP timeout on large volume exports (>20,000 records)",
+        "Provide direct backend-generated secure download link",
+        "Provide encryption security protocol"
+      ],
+      "prohibited_claims": [
+        "Telling customer they must still manually export month by month",
+        "Ignoring the tomorrow-morning deadline"
+      ],
+      "expected_action_items": [
+        "Deliver complete backend export link",
+        "Explain encryption/security details"
+      ],
+      "tone_requirement": "proactive_empathetic_high_touch",
+      "min_resolution_points": [
+        "Solve export timeout for 35,000 tickets",
+        "Provide full 12-month file before executive review",
+        "Ensure security compliance"
+      ]
+    }
+  }
+]

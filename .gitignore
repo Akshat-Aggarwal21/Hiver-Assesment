@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Testing & Caches
+.pytest_cache/
+.coverage
+htmlcov/
+reports/*.json
+reports/*.md
+!reports/evaluation_report.md
+!reports/evaluation_report.json
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Environment & Secrets
+.env
+*.local

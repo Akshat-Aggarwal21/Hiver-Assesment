@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hiver AI — Shared Inbox Email Copilot & Quality Evaluation Suite</title>
+  <meta name="description" content="Production-grade AI email generator and multi-dimensional evaluation system tailored for Hiver's shared inboxes inside Gmail.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- App Container -->
+  <div class="app-layout">
+    
+    <!-- Top Navigation Bar -->
+    <header class="top-nav" id="top-nav">
+      <div class="nav-brand">
+        <div class="brand-logo">
+          <div class="brand-icon-hex">H</div>
+          <div class="brand-pulse"></div>
+        </div>
+        <div class="brand-text">
+          <h1>Hiver <span class="accent-gradient">AI Copilot</span></h1>
+          <span class="brand-sub">Gmail Shared Inbox Intelligence & HEQI Evaluation</span>
+        </div>
+      </div>
+
+      <div class="nav-metrics">
+        <div class="metric-pill" title="Pre-loaded realistic shared inbox dataset">
+          <span class="pill-dot green"></span>
+          <span class="pill-label">Dataset:</span>
+          <span class="pill-val" id="nav-ticket-count">20 Tickets</span>
+        </div>
+        <div class="metric-pill" title="RAG Knowledge Base Articles Loaded">
+          <span class="pill-dot blue"></span>
+          <span class="pill-label">RAG Grounding:</span>
+          <span class="pill-val">Active (8 KB Docs)</span>
+        </div>
+        <div class="metric-pill" title="Hiver Email Quality Index Benchmark">
+          <span class="pill-dot purple"></span>
+          <span class="pill-label">HEQI Mean:</span>
+          <span class="pill-val" id="nav-mean-heqi">83.2 / 100</span>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn btn-secondary" id="btn-open-kb">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          Knowledge Base
+        </button>
+        <button class="btn btn-primary" id="btn-open-benchmark">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          Run Benchmark Suite
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Workspace (3-Column Layout) -->
+    <main class="workspace-grid">
+      
+      <!-- Column 1: Shared Inbox Queue -->
+      <section class="inbox-column" id="inbox-column">
+        <div class="column-header">
+          <div class="inbox-title-row">
+            <h2>Shared Inbox</h2>
+            <span class="badge badge-count" id="inbox-badge-count">20</span>
+          </div>
+          <div class="search-box">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="ticket-search" placeholder="Search customer, issue, ID...">
+          </div>
+          <div class="category-filter-chips" id="category-chips">
+            <button class="chip active" data-category="all">All</button>
+            <button class="chip" data-category="billing">Billing</button>
+            <button class="chip" data-category="technical_issue">Tech Bug</button>
+            <button class="chip" data-category="cancellation_refund">Refunds</button>
+            <button class="chip" data-category="sla_escalation">SLA Urg</button>
+            <button class="chip" data-category="account_access">Security</button>
+            <button class="chip" data-category="onboarding">Onboard</button>
+            <button class="chip" data-category="feature_request">Feature</button>
+          </div>
+        </div>
+
+        <div class="ticket-list" id="ticket-list">
+          <!-- Populated dynamically -->
+          <div class="loading-state">Loading shared inbox tickets...</div>
+        </div>
+      </section>
+
+      <!-- Column 2: Thread View & RAG Grounding -->
+      <section class="thread-column" id="thread-column">
+        
+        <!-- Ticket Context Header -->
+        <div class="thread-header" id="thread-header">
+          <div class="thread-header-meta">
+            <div class="ticket-tags">
+              <span class="tag-badge" id="th-ticket-id">TICK-101</span>
+              <span class="tag-badge category-tag" id="th-category">billing</span>
+              <span class="tag-badge tier-tag" id="th-tier">Pro</span>
+              <span class="tag-badge sentiment-tag" id="th-sentiment">frustrated</span>
+              <span class="tag-badge priority-tag" id="th-priority">urgent</span>
+            </div>
+            <h3 class="thread-subject" id="th-subject">Accidental annual renewal - need full refund immediately</h3>
+            <div class="customer-info-bar">
+              <span class="info-item"><strong>Account:</strong> <span id="th-account-id">ACC-84920</span></span>
+              <span class="info-item"><strong>MRR:</strong> <span id="th-mrr">$120/mo</span></span>
+              <span class="info-item"><strong>Customer:</strong> <span id="th-customer-name">Sarah Jenkins</span> (<span id="th-customer-email">sarah@acmedigital.com</span>)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RAG Policy Grounding Accordion -->
+        <div class="rag-drawer" id="rag-drawer">
+          <div class="rag-drawer-toggle" id="rag-drawer-toggle">
+            <div class="rag-toggle-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              <span>Retrieved Internal Knowledge Base Policies (Anti-Hallucination Guardrail)</span>
+            </div>
+            <span class="toggle-arrow">&#9662;</span>
+          </div>
+          <div class="rag-drawer-content" id="rag-drawer-content">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+
+        <!-- Email Thread Messages Container -->
+        <div class="thread-messages" id="thread-messages">
+          <!-- Populated dynamically -->
+        </div>
+
+        <!-- Ground Truth Golden Reference Accordion -->
+        <div class="ground-truth-drawer" id="ground-truth-drawer">
+          <div class="gt-drawer-toggle" id="gt-drawer-toggle">
+            <div class="gt-toggle-left">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+              <span>Human Senior Support Reference (Golden Ground Truth)</span>
+            </div>
+            <span class="toggle-arrow">&#9662;</span>
+          </div>
+          <div class="gt-drawer-content" id="gt-drawer-content">
+            <pre class="gt-text" id="gt-text"></pre>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Column 3: AI Reply Studio & Quality Evaluator -->
+      <section class="copilot-column" id="copilot-column">
+        <div class="copilot-header">
+          <div class="copilot-title">
+            <h3>AI Email Reply Studio</h3>
+            <span class="copilot-subtitle">Context-aware generation & real-time evaluation</span>
+          </div>
+        </div>
+
+        <!-- Generator Controls -->
+        <div class="generator-controls">
+          <div class="control-row">
+            <div class="control-group">
+              <label for="provider-select">AI Generator Engine</label>
+              <select id="provider-select" class="form-select">
+                <option value="auto">Auto (Deterministic Offline + API Fallback)</option>
+                <option value="mock">Offline Intelligent Engine (0 API Keys Required)</option>
+                <option value="openai">OpenAI GPT-4o-mini (via OPENAI_API_KEY)</option>
+                <option value="gemini">Google Gemini 1.5 (via GEMINI_API_KEY)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="control-row">
+            <div class="control-group">
+              <label for="custom-instruction">Custom Guidance (Optional)</label>
+              <input type="text" id="custom-instruction" class="form-input" placeholder="e.g., Emphasize refund speed, executive warmth, etc.">
+            </div>
+          </div>
+
+          <div class="action-btn-row">
+            <button class="btn btn-generate" id="btn-generate-reply">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+              <span>Generate AI Reply</span>
+            </button>
+            <button class="btn btn-secondary" id="btn-evaluate-reply" title="Re-evaluate currently edited draft">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+              Evaluate
+            </button>
+          </div>
+        </div>
+
+        <!-- Generated Reply Text Editor -->
+        <div class="reply-editor-container">
+          <div class="editor-header">
+            <span>Draft Response (Hiver Shared Inbox Composer)</span>
+            <span class="editor-stats" id="reply-word-count">0 words</span>
+          </div>
+          <textarea id="reply-editor" class="reply-textarea" placeholder="AI-generated reply will appear here. You can also edit it directly before re-evaluating..."></textarea>
+        </div>
+
+        <!-- Real-Time Evaluation Scorecard -->
+        <div class="scorecard-panel" id="scorecard-panel">
+          <div class="scorecard-header">
+            <h4>Hiver Email Quality Index (HEQI)</h4>
+            <span class="heqi-grade-badge" id="heqi-grade">Exceptional</span>
+          </div>
+
+          <!-- Circular Composite Gauge -->
+          <div class="composite-gauge-container">
+            <div class="gauge-circle">
+              <div class="gauge-inner">
+                <span class="gauge-value" id="gauge-heqi-val">88.5</span>
+                <span class="gauge-sub">/ 100</span>
+              </div>
+            </div>
+            <div class="gauge-meta">
+              <span class="confidence-label" id="confidence-label">Ready to Send</span>
+              <p class="confidence-desc" id="confidence-desc">High factual accuracy, policy adherence, and clear action items.</p>
+            </div>
+          </div>
+
+          <!-- Dimension Breakdown Bars -->
+          <div class="dimensions-list">
+            <div class="dim-row">
+              <div class="dim-label-row">
+                <span>Policy Adherence & Guardrails</span>
+                <span class="dim-score" id="score-policy">90%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill blue" id="bar-policy" style="width: 90%;"></div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div class="dim-label-row">
+                <span>Intent Resolution & Completeness</span>
+                <span class="dim-score" id="score-intent">85%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill teal" id="bar-intent" style="width: 85%;"></div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div class="dim-label-row">
+                <span>Tone, Empathy & De-escalation</span>
+                <span class="dim-score" id="score-tone">95%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill purple" id="bar-tone" style="width: 95%;"></div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div class="dim-label-row">
+                <span>Actionability & Clarity</span>
+                <span class="dim-score" id="score-action">90%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill amber" id="bar-action" style="width: 90%;"></div>
+              </div>
+            </div>
+
+            <div class="dim-row">
+              <div class="dim-label-row">
+                <span>Semantic Similarity to Golden Reference</span>
+                <span class="dim-score" id="score-semantic">78%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill emerald" id="bar-semantic" style="width: 78%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lexical Metrics Footer -->
+          <div class="lexical-chips">
+            <span class="lex-chip">ROUGE-L: <strong id="lex-rougel">0.62</strong></span>
+            <span class="lex-chip">BLEU: <strong id="lex-bleu">24.5</strong></span>
+          </div>
+
+          <!-- Strengths and Areas of Improvement -->
+          <div class="feedback-cards">
+            <div class="feedback-block strengths">
+              <h5>Detected Strengths</h5>
+              <ul id="feedback-strengths">
+                <li>Strong policy adherence</li>
+              </ul>
+            </div>
+            <div class="feedback-block improvements">
+              <h5>Recommendations</h5>
+              <ul id="feedback-improvements">
+                <li>None required</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Benchmark Suite Modal -->
+  <div class="modal-overlay" id="benchmark-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="modal-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          </div>
+          <div>
+            <h3>Dataset Benchmark Suite (HEQI Evaluation)</h3>
+            <p>Runs end-to-end generation and multi-dimensional scoring across all 20 shared inbox tickets.</p>
+          </div>
+        </div>
+        <button class="modal-close" id="btn-close-benchmark">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="benchmark-run-bar">
+          <div class="benchmark-provider-select">
+            <label>Generator Engine:</label>
+            <select id="bench-provider-select" class="form-select">
+              <option value="auto">Auto (Offline Deterministic / API)</option>
+              <option value="mock">Offline Intelligent Engine</option>
+              <option value="openai">OpenAI GPT-4o-mini</option>
+              <option value="gemini">Google Gemini 1.5</option>
+            </select>
+          </div>
+          <button class="btn btn-primary" id="btn-start-benchmark">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Execute Benchmark Across Dataset
+          </button>
+        </div>
+
+        <div class="benchmark-kpis" id="benchmark-kpis">
+          <div class="kpi-card">
+            <span class="kpi-label">Mean HEQI Score</span>
+            <span class="kpi-value" id="kpi-mean-heqi">83.2</span>
+            <span class="kpi-sub">Target: ≥ 80.0</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Policy Adherence</span>
+            <span class="kpi-value" id="kpi-policy">84.9%</span>
+            <span class="kpi-sub">Anti-hallucination rate</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Intent Resolution</span>
+            <span class="kpi-value" id="kpi-intent">72.1%</span>
+            <span class="kpi-sub">Completeness of answers</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">High Confidence Drafts</span>
+            <span class="kpi-value" id="kpi-high-perf">8 / 20</span>
+            <span class="kpi-sub">Score ≥ 85.0</span>
+          </div>
+        </div>
+
+        <!-- Benchmark Tables -->
+        <div class="benchmark-breakdowns">
+          <div class="breakdown-card">
+            <h4>Performance by Category</h4>
+            <table class="benchmark-table" id="table-bench-categories">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Tickets</th>
+                  <th>Mean HEQI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="breakdown-card">
+            <h4>Performance by Customer Sentiment</h4>
+            <table class="benchmark-table" id="table-bench-sentiments">
+              <thead>
+                <tr>
+                  <th>Sentiment</th>
+                  <th>Tickets</th>
+                  <th>Mean HEQI</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Populated dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="btn-download-json">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export evaluation_report.json
+        </button>
+        <button class="btn btn-secondary" id="btn-download-md">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          Export evaluation_report.md
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Knowledge Base Drawer Modal -->
+  <div class="modal-overlay" id="kb-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div class="modal-title-wrap">
+          <div class="modal-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <div>
+            <h3>Hiver Support Knowledge Base & Policies</h3>
+            <p>Retrieved dynamically by RAG to ensure strict factual accuracy and compliance.</p>
+          </div>
+        </div>
+        <button class="modal-close" id="btn-close-kb">&times;</button>
+      </div>
+      <div class="modal-body kb-cards-container" id="kb-modal-content">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

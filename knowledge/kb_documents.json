@@ -1,0 +1,58 @@
+[
+  {
+    "id": "KB-BILL-01",
+    "category": "billing",
+    "title": "Refund and Cancellation Policy",
+    "content": "Our platform offers a 14-day no-questions-asked full refund for all new monthly and annual subscriptions. For cancellations after 14 days on annual plans, customers receive pro-rated account credits for remaining unused whole months, but direct cash refunds to credit cards are restricted beyond 30 days. Customers can cancel anytime directly from Settings > Billing > Cancel Subscription without speaking to an agent. Downgrades take effect at the end of the current billing cycle.",
+    "keywords": ["refund", "cancel", "cancellation", "credit", "money back", "downgrade", "subscription", "charge"]
+  },
+  {
+    "id": "KB-BILL-02",
+    "category": "billing",
+    "title": "Invoicing, VAT, and Payment Receipts",
+    "content": "Official tax invoices with VAT/GST identification numbers are generated automatically on the 1st of each month and available under Settings > Billing > Invoices. To update company tax details (tax ID, registered business address), an Account Admin must update the billing profile prior to the invoice date. Re-issuing past invoices with modified company names requires finance team review (2-3 business days).",
+    "keywords": ["invoice", "vat", "gst", "tax", "receipt", "billing address", "payment failed", "charge"]
+  },
+  {
+    "id": "KB-TECH-01",
+    "category": "technical_issue",
+    "title": "Gmail Sync and Shared Inbox Connection Troubleshooting",
+    "content": "If emails or tags in the shared inbox are lagging or not syncing with Gmail: 1) Verify Google Workspace OAuth token status under Integrations > Gmail. 2) Re-authorize the Google account if 'Token Expired' status appears. 3) Check if Gmail sync throttle has been triggered by sending more than 2,000 emails/day per user. 4) Clear browser local cache or toggle the Hiver Chrome extension off and on. In 95% of cases, reconnecting the Google OAuth credentials resolves sync latency within 5 minutes.",
+    "keywords": ["sync", "gmail", "extension", "delay", "oauth", "token", "tag", "shared inbox", "missing email"]
+  },
+  {
+    "id": "KB-TECH-02",
+    "category": "technical_issue",
+    "title": "Email Collision Detection and Activity Tracking",
+    "content": "Email collision detection alerts agents in real-time when another teammate is currently viewing or drafting a response to the same email thread. If collision banners are not updating, verify that WebSockets are not blocked by the corporate firewall or VPN on port 443. Live drafts auto-save every 5 seconds to prevent work duplication.",
+    "keywords": ["collision", "collision detection", "duplicate", "draft", "concurrent", "agent", "typing"]
+  },
+  {
+    "id": "KB-SEC-01",
+    "category": "account_access",
+    "title": "Account Security, 2FA Recovery, and Password Reset",
+    "content": "For user security, support representatives are strictly prohibited from resetting passwords or disabling Two-Factor Authentication (2FA) directly upon email request. To recover a locked account: 1) The Workspace Admin must initiate a 2FA reset from the Team Management console, OR 2) The user must submit a verified security recovery form with government ID match if they are the sole owner. Account lockouts after 5 failed password attempts automatically clear after 30 minutes.",
+    "keywords": ["password", "2fa", "two-factor", "locked", "login", "reset", "security", "authenticator", "otp"]
+  },
+  {
+    "id": "KB-SLA-01",
+    "category": "sla_escalation",
+    "title": "Service Level Agreements (SLA) & Escalation Protocols",
+    "content": "Enterprise Tier SLA guarantees a first response within 1 hour, 24/7, with a designated Customer Success Manager (CSM) and dedicated Slack channel. Pro Tier SLA guarantees first response within 4 hours during business hours (9 AM - 6 PM EST, Mon-Fri). Starter and Free tiers have standard email support with up to 24-48 hour turnaround. If an Enterprise ticket breaches 1 hour, it is automatically escalated to Tier 2 on-call engineering with a priority incident ticket.",
+    "keywords": ["sla", "escalation", "urgent", "priority", "enterprise", "downtime", "guarantee", "breach", "csm"]
+  },
+  {
+    "id": "KB-ONB-01",
+    "category": "onboarding",
+    "title": "Adding Team Members and Shared Mailbox Permissions",
+    "content": "To add new team members: 1) Workspace Admin navigates to Settings > Teammates > Invite Teammates. 2) Enter their Google Workspace email addresses. 3) Assign roles: Admin (full configuration and billing), Member (read/write/assign emails), or Observer (read-only and internal notes). Newly invited members receive an activation email and must install the Hiver Chrome extension to access shared inboxes in their Gmail sidebar.",
+    "keywords": ["add user", "invite", "teammate", "permission", "role", "observer", "admin", "onboarding", "setup"]
+  },
+  {
+    "id": "KB-FEAT-01",
+    "category": "feature_request",
+    "title": "Feature Requests and Product Feedback Workflow",
+    "content": "All customer feature requests are logged directly to the Product Engineering roadmap board. Support agents must tag the customer's account ID and ARR value. While we cannot guarantee exact delivery dates for non-committed roadmap items, our Product team reviews requests bi-weekly. Customers can track status on our public roadmap portal (roadmap.hiverhq.com) and will be notified via email when a requested feature enters beta testing.",
+    "keywords": ["feature", "request", "roadmap", "suggestion", "enhancement", "integration", "feedback", "when will"]
+  }
+]
