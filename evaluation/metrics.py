@@ -259,7 +259,7 @@ class EmailMetricsCalculator:
         generated_reply: str,
         ground_truth: str
     ) -> float:
-        """Computes semantic vector cosine similarity using TF-IDF word vectors."""
+        """Computes bag-of-words cosine similarity (raw term-frequency vectors, no IDF weighting)"""
         words_gen = self._get_words(generated_reply)
         words_ref = self._get_words(ground_truth)
 
